@@ -1,0 +1,37 @@
+#!/usr/bin/env zsh
+
+function dict() {
+    help(){
+        echo 'usage: dict [-h | --help] [-i | --install] [word]'
+        echo ''
+        echo 'options:'
+        echo '\t-h | --help   \t\tshow this help'
+        echo '\t-I | --install\t\tdownload and build dictionary.'
+    }
+
+    install(){
+        # initialize dictionary
+        pushd $ZPLUG_HOME/repos/matsub/zshtools/ejtrans
+        python init_dict.py
+        popd
+    }
+
+    # argparse
+    for arg in $@; do
+        case $arg in
+            -h|--help)
+                help
+                return;;
+            -I|--install)
+                install
+                return;;
+            *)
+                word=$arg
+        esac
+    done
+
+    # execute dictionary
+    python $ZPLUG_HOME/repos/matsub/zshtools/ejtrans/dictionary.py $word
+}
+
+dict $@

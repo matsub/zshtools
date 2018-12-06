@@ -1,0 +1,8 @@
+#compdef dict		
+
+_dict(){
+    _arguments \
+        '(- *)'{-h,--help}'[show help]' \
+        '(- *)'{-I,--install}'[install dictionary]' \
+        '*: :->word'
+}
