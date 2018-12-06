@@ -12,7 +12,7 @@ function dict() {
     install(){
         # initialize dictionary
         pushd $ZPLUG_HOME/repos/matsub/zshtools/ejtrans
-        python init_dict.py
+        python3 init_dict.py
         popd
     }
 
@@ -31,7 +31,7 @@ function dict() {
     done
 
     # execute dictionary
-    python $ZPLUG_HOME/repos/matsub/zshtools/ejtrans/dictionary.py $word
+    python3 $ZPLUG_HOME/repos/matsub/zshtools/ejtrans/dictionary.py $word
 }
 
 dict $@
